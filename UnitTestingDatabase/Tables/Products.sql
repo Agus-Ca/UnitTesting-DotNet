@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[Products]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY,
+	[Name] VARCHAR(60) NOT NULL,
+	[Description] VARCHAR(500) NOT NULL,
+	[Price] MONEY NOT NULL,
+	[IsActive] BIT NOT NULL
+)
