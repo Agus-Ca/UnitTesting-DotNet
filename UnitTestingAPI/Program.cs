@@ -1,4 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using MediatR;
+
+using DemoUnitTesting.Domain;
 using UnitTestingAPI.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +12,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddMediatR(typeof(Result).Assembly);
 builder.Services.AddDbContext<DatabaseContext>
     (options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("UnitTestingDatabaseConnection"))
