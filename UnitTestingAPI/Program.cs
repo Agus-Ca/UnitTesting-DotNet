@@ -3,6 +3,8 @@ using MediatR;
 
 using DemoUnitTesting.Domain;
 using UnitTestingAPI.Infrastructure.Persistence;
+using UnitTestingAPI.Application.Products.Interfaces;
+using UnitTestingAPI.Application.Products.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +15,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddTransient<IProductService, ProductService>();
 builder.Services.AddMediatR(typeof(Result).Assembly);
 builder.Services.AddDbContext<DatabaseContext>
     (options =>
