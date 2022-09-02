@@ -1,16 +1,19 @@
-﻿using DemoUnitTesting.Domain;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+
+using DemoUnitTesting.Domain;
 using UnitTestingAPI.Application.Products.Interfaces;
 using UnitTestingAPI.Domain.Entities;
-using UnitTestingAPI.Infrastructure.Persistence;
+using UnitTestingAPI.Infrastructure.Persistence.Interfaces;
+
+
 
 namespace UnitTestingAPI.Application.Products.Services;
 
 public class ProductService : IProductService
 {
-    private readonly DatabaseContext _databaseContext;
+    private readonly IDatabaseContext _databaseContext;
 
-    public ProductService(DatabaseContext databaseContext)
+    public ProductService(IDatabaseContext databaseContext)
     {
         _databaseContext = databaseContext;
     }
