@@ -1,17 +1,20 @@
-﻿using MediatR;
+﻿using Microsoft.EntityFrameworkCore;
+using MediatR;
 
 using DemoUnitTesting.Domain;
-using UnitTestingAPI.Infrastructure.Persistence;
-using Microsoft.EntityFrameworkCore;
 using UnitTestingAPI.Domain.Entities;
+using UnitTestingAPI.Infrastructure.Persistence.Interfaces;
+
+
+
 
 namespace UnitTestingAPI.Application.Products.Commands.AddProduct;
 
 public class AddProductRequestHandler : IRequestHandler<AddProductRequest, Result<AddProductResponse>>
 {
-    private readonly DatabaseContext _database;
+    private readonly IDatabaseContext _database;
 
-    public AddProductRequestHandler(DatabaseContext database)
+    public AddProductRequestHandler(IDatabaseContext database)
     {
         _database = database;
     }

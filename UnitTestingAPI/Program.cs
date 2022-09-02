@@ -5,6 +5,7 @@ using DemoUnitTesting.Domain;
 using UnitTestingAPI.Infrastructure.Persistence;
 using UnitTestingAPI.Application.Products.Interfaces;
 using UnitTestingAPI.Application.Products.Services;
+using UnitTestingAPI.Infrastructure.Persistence.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +18,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient<IProductService, ProductService>();
 builder.Services.AddMediatR(typeof(Result).Assembly);
-builder.Services.AddDbContext<DatabaseContext>
+builder.Services.AddDbContext<IDatabaseContext, DatabaseContext>
     (options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("UnitTestingDatabaseConnection"))
     );
