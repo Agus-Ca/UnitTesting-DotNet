@@ -1,14 +1,14 @@
 ﻿using DemoUnitTesting.Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using UnitTestingAPI.Infrastructure.Persistence;
+using UnitTestingAPI.Infrastructure.Persistence.Interfaces;
 
 namespace UnitTestingAPI.Application.Products.Commands.DeleteProduct;
 
 public class DeleteProductRequestHandler : IRequestHandler<DeleteProductRequest, Result>
 {
-    private readonly DatabaseContext _database;
-	public DeleteProductRequestHandler(DatabaseContext databaseContext)
+    private readonly IDatabaseContext _database;
+	public DeleteProductRequestHandler(IDatabaseContext databaseContext)
 	{
         _database = databaseContext;
 	}
